@@ -6,8 +6,5 @@ class Task extends  Serializable {
   //val logic = (num: Int) => {num * 2}
   val logic : (Int)=>Int = _ * 2
 
-  //计算
-  def compute() = {
-    datas.map(logic)
-  }
+
 }

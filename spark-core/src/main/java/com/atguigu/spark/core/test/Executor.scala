@@ -12,9 +12,9 @@ object Executor {
     val client: Socket = server.accept()
     val in: InputStream = client.getInputStream
     val objIn = new ObjectInputStream(in)
-    val task: Task = objIn.readObject().asInstanceOf[Task]
+    val task: SubTask = objIn.readObject().asInstanceOf[SubTask]
     val ints: List[Int] = task.compute()
-    println("计算节点的计算结果为：" + ints)
+    println("计算节点[9999]的计算结果为：" + ints)
     objIn.close()
     client.close()
     server.close()
