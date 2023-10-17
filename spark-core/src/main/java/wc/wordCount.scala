@@ -21,6 +21,6 @@ object wordCount {
     val array: Array[(String, Int)] = wordToCount.collect()
     array.foreach{ case (word, count) => println(s"$word: $count") }
 
-    sc.stop();
+    sc.stop()
   }
 }
