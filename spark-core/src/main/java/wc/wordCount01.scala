@@ -12,7 +12,8 @@ object wordCount01 {
     val sparkConf = new SparkConf().setMaster("local").setAppName("WordCount")
     val sc = new SparkContext(sparkConf)
 
-    wordcount9(sc)
+//    wordcount1(sc)
+    wordcount2(sc)
 
 
     sc.stop()
@@ -22,14 +23,16 @@ object wordCount01 {
     val words = rdd.flatMap(_.split(" "))
     val group: RDD[(String, Iterable[String])] = words.groupBy(word => word)
     val wordCount: RDD[(String, Int)] = group.mapValues(iter => iter.size)
+    wordCount.collect().foreach(println)
   }
 
   def wordcount2(sc: SparkContext) = {
-    val rdd = sc.makeRDD(List("hello scala", "hello spark"))
+    val rdd = sc.makeRDD(List("hello scala", "hello spark", "hello java"))
     val words = rdd.flatMap(_.split(" "))
     val wordOne = words.map((_,1))
     val group: RDD[(String, Iterable[Int])] = wordOne.groupByKey()
     val wordCount: RDD[(String, Int)] = group.mapValues(iter => iter.size)
+    wordCount.collect().foreach(println)
   }
 
   def wordcount3(sc: SparkContext) = {
